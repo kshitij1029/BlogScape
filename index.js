@@ -119,12 +119,6 @@ app.get("/Posts", (req,res) =>{
   res.render("Posts", {posts: posts, topics: topics, user: user.length > 0 ? user[user.length - 1] : null});
 });
 
-app.get("/Posts/:username/MyPosts", (req, res) =>{
-  let {username} = req.params;
-  let userPosts = posts.filter(p => p.user === username);
-  res.render("MyPosts", {posts: userPosts, user: user.length > 0 ? user[user.length - 1] : null});
-});
-
 app.patch("/Posts/:id", (req, res) =>{
   let {id} = req.params;
   let newContent = req.body.content;
@@ -147,6 +141,10 @@ app.delete("/Posts/:id", (req, res) => {
   res.redirect("/Posts");
 });
 
-
+app.get("/Posts/:username/MyPosts", (req, res) =>{
+  let {username} = req.params;
+  let userPosts = posts.filter(p => p.user === username);
+  res.render("MyPosts", {posts: userPosts, user: user.length > 0 ? user[user.length - 1] : null});
+});
 
 
