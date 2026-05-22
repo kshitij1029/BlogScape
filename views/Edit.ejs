@@ -6,134 +6,134 @@
     <title>EditPosts</title>
     <link rel="stylesheet" href="/Blog/Blog.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
     <style>
         /* ==========================================================================
-           Mobile Responsive Enhancements (Desktop View Remains Intact)
+           MOBILE RESPONSIVENESS & BUG FIXES (Leaves Laptop Layout Intact)
            ========================================================================== */
-
-        /* Core Layout Alignment Rules */
-        .container {
-            display: flex;
-            gap: 32px;
-            max-width: 1140px;
-            margin: 0 auto;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-
-        main {
-            flex: 1;
-        }
-
-        aside {
-            width: 340px;
-            flex-shrink: 0;
-        }
-
-        /* Hidden Control Nodes for Mobile Nav Burger */
-        #menu-toggle {
-            display: none !important;
-        }
-
-        .menu-icon {
+        
+        /* Base helper to ensure hamburger button defaults to hidden on desktop */
+        .menu-toggle {
             display: none;
+            background: none;
+            border: none;
+            color: inherit;
+            font-size: 24px;
             cursor: pointer;
-            padding: 10px;
-            z-index: 110;
         }
 
-        .menu-icon span {
-            display: block;
-            width: 24px;
-            height: 2px;
-            background-color: currentColor;
-            margin: 5px 0;
-            transition: transform 0.3s ease, opacity 0.3s ease;
-            border-radius: 2px;
-        }
-
-        /* Responsive Breakpoint Matrix */
-        @media (max-width: 768px) {
+        @media screen and (max-width: 768px) {
+            /* 1. Header Layout Adjustments */
             header {
                 position: relative;
-                padding: 0 20px !important;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                height: 70px;
-                box-sizing: border-box;
-            }
-
-            /* Enable the Interactive Hamburger Graphics */
-            .menu-icon {
-                display: block;
-            }
-
-            /* Shift Navigation panel into an animated dropdown drawer */
-            .nav-links {
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: white; /* Fallback profile default background */
-                border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-                flex-direction: column !important;
+                display: flex !important;
+                flex-direction: column;
                 align-items: stretch !important;
-                gap: 0 !important;
-                padding: 10px 20px 20px 20px;
-                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.05);
-                
-                pointer-events: none;
-                opacity: 0;
-                transform: translateY(-10px);
-                transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
-                z-index: 105;
-                display: flex;
+                justify-content: flex-start !important;
+                padding: 15px 20px;
+                background-color: #fff; 
+                box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+                z-index: 100; 
             }
 
-            .nav-links a, 
-            .nav-links button {
+            .nav-container {
+                display: flex !important;
+                justify-content: space-between !important;
+                align-items: center !important;
                 width: 100%;
-                box-sizing: border-box;
+            }
+
+            .menu-toggle {
+                display: block; /* Shows hamburger icon on mobile */
+            }
+
+            /* 2. Responsive Menu: Stacks elements downward to prevent overlapping content */
+            .nav-links {
+                display: none; /* Hidden by default */
+                flex-direction: column;
+                width: 100%;
+                gap: 12px;
+                padding: 15px 0 5px 0;
                 text-align: center;
             }
 
+            /* Class injected by JavaScript when hamburger is clicked */
+            .nav-links.show {
+                display: flex !important;
+            }
+
+            /* 3. Perfect Centering and Bound Alignment for Links & Buttons */
             .nav-links a {
-                padding: 14px 0;
-                display: block;
-            }
-
-            .nav-links button {
-                margin-top: 10px;
-                height: 45px;
-            }
-
-            /* Toggle Action Triggers */
-            #menu-toggle:checked ~ .nav-links {
-                opacity: 1;
-                transform: translateY(0);
-                pointer-events: auto;
-            }
-
-            /* Morph Hamburger to standard Close (X) format */
-            #menu-toggle:checked ~ .menu-icon span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-            #menu-toggle:checked ~ .menu-icon span:nth-child(2) { opacity: 0; }
-            #menu-toggle:checked ~ .menu-icon span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-            /* Structural Layout Collapsing */
-            .container {
-                flex-direction: column;
-                gap: 24px;
-                padding: 16px;
-            }
-
-            aside {
+                display: flex !important;
+                justify-content: center !important;
+                align-items: center !important;
                 width: 100%;
-                order: 2; /* Form retains top visibility position */
+                text-align: center;
+                padding: 8px 0;
             }
 
-            main {
-                order: 1;
+            /* Keeps the "Posts" button perfectly structured on small screens */
+            .nav-links button.btn-primary {
+                width: 100%;
+                height: 45px;
+                display: flex !important;
+                justify-content: center !important;
+                align-items: center !important;
+                border-radius: 25px; 
+                padding: 0;
+                overflow: hidden;
+            }
+
+            .nav-links button.btn-primary a {
+                width: 100%;
+                height: 100%;
+                display: flex !important;
+                justify-content: center !important;
+                align-items: center !important;
+                color: white !important;
+            }
+
+            /* 4. Page layout shift down */
+            .container {
+                display: flex;
+                flex-direction: column;
+                gap: 30px;
+                padding: 20px 15px;
+                margin-top: 0; 
+            }
+
+            main, aside {
+                width: 100% !important;
+            }
+
+            main form + form {
+                margin-top: 15px;
+            }
+
+            /* 5. Perfect Text Centering across Div Blocks */
+            .logo,
+            .logo-icon,
+            .user-stat-card,
+            .post-tag,
+            .sidebar-widget h3 {
+                display: flex !important;
+                justify-content: center !important;
+                align-items: center !important;
+                text-align: center !important;
+            }
+
+            .sidebar-widget {
+                text-align: center;
+            }
+
+            .user-stat-card {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            /* Catches category flex container on mobile */
+            .sidebar-widget div[style*="display: flex"] {
+                justify-content: center !important;
             }
         }
     </style>
@@ -145,20 +145,20 @@
                 <div class="logo-icon">B</div>
                 <div class="logo-text">BlogScape</div>
             </a>
-            <!-- Hamburger Menu Icon (Hidden on desktop) -->
             <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
                 <i class="fa-solid fa-bars"></i>
             </button>
         </div>
-        <!-- Grouped links for mobile toggle behavior -->
+        
         <div class="nav-links" id="navLinks">
             <a href="/Blog" class="active">Profile</a>
-            <button class="btn-primary"><a href="/Posts" style="color:white; display: flex; align-items: center; justify-content: center; height: 100%; width: 100%;">Posts</a></button>
+            <button class="btn-primary">
+                <a href="/Posts" style="color:white; display: flex; align-items: center; justify-content: center; height: 100%; width: 100%;">Posts</a>
+            </button>
         </div>
     </header>
 
     <div class="container">
-        <!-- Main Feed Area -->
         <main>
             <form id="loginForm" method="POST" action="/Posts/<%= post.id %>?_method=PATCH">
                 <input type="hidden" id="post-id">
@@ -175,7 +175,6 @@
                     <textarea id="post-content" name="content" placeholder="Tell your story..." required><%= post.content %></textarea>
                 </div>
                 <button type="submit" class="btn-primary" style="width: 100%; height: 50px; font-size: 16px;">Update Story</button>
-                   
             </form>
             <form method="post" action="/Posts/<%= post.id %>?_method=DELETE" >
                 <button type="submit" class="trash btn-primary">
@@ -184,7 +183,6 @@
             </form> 
         </main>
 
-        <!-- Sidebar -->
         <aside>
             <div class="sidebar-widget">
                 <h3>About BlogScape</h3>
@@ -196,7 +194,6 @@
             <div class="sidebar-widget">
                 <h3>Current Writer</h3>
                 <div id="current-user-info" class="user-stat-card">
-                    <!-- User info will be injected here -->
                     <div class="user-avatar"><%= blogger.charAt(0).toUpperCase() %></div>
                     <div>
                         <span class="user-name" id="display-uid"><%= blogger %></span>
@@ -221,5 +218,18 @@
     <div id="toast">Post published successfully!</div>
 
     <script src="/Blog/Blog.js"></script>
+    
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('show');
+            const icon = menuToggle.querySelector('i');
+            // Dynamically alternates between Hamburger (bars) and Close (xmark) icons
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-xmark');
+        });
+    </script>
 </body>
 </html>
