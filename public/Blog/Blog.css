@@ -361,3 +361,13 @@ textarea {
 #toast.show {
   transform: translateY(0);
 }
+
+.nav-links button {
+    margin-top: 10px;
+    height: 45px;
+    
+    /* --- ADD THESE THREE LINES TO CENTER THE TEXT --- */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
