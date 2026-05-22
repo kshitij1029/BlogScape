@@ -857,3 +857,44 @@ header {
   margin-top: 10px;
 }
 
+
+
+
+/* ==========================================================================
+   Media Queries for Tablet & Mobile Layout Shifts
+   ========================================================================== */
+@media (max-width: 960px) {
+    html, body {
+        overflow: hidden; /* Keep body fixed even on tablet/mobile screens */
+    }
+    .container {
+        grid-template-columns: 1fr;
+        overflow-y: auto; /* Allow layout wrapper container to scroll natively when components stack */
+        -webkit-overflow-scrolling: touch;
+        height: calc(100vh - 76px);
+    }
+    .container::-webkit-scrollbar {
+        display: none;
+    }
+    .container {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+    #postsContainer {
+        overflow-y: visible; /* Let the post elements unfold naturally inside the scrollable container layout */
+        height: auto;
+        flex: none;
+    }
+    
+    /* --- UPDATED SIDEBAR BLOCK --- */
+    .sidebar {
+        display: none !important; /* Hides the Popular Topics widget entirely on mobile */
+    }
+    
+    .feed-section {
+        order: 1;
+        height: auto;
+        overflow-y: visible;
+    }
+}
+
