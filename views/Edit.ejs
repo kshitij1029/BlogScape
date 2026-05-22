@@ -109,6 +109,116 @@
                 justify-content: center !important;
             }
         }
+
+        @media screen and (max-width: 768px) {
+            /* 1. Header & Hamburger Layout */
+            header {
+                position: relative;
+                display: flex !important;
+                flex-direction: column;
+                align-items: stretch !important;
+                justify-content: flex-start !important;
+                padding: 15px 20px;
+                background-color: #fff; /* Ensures background hides content behind it */
+                box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+                z-index: 100; /* Keeps navbar above other content layers */
+            }
+
+            .nav-container {
+                display: flex !important;
+                justify-content: space-between !important;
+                align-items: center !important;
+                width: 100%;
+            }
+
+            .menu-toggle {
+                display: block; /* Shows hamburger/X icon on mobile */
+            }
+
+            /* 2. Fix Overlaps: Stack Nav Links cleanly below the Logo */
+            .nav-links {
+                display: none; /* Hidden by default */
+                flex-direction: column;
+                width: 100%;
+                gap: 12px;
+                padding: 15px 0 5px 0;
+                text-align: center;
+            }
+
+            /* Active toggle class */
+            .nav-links.show {
+                display: flex !important;
+            }
+
+            /* 3. Perfect Centering for Buttons and Anchor Tags */
+            .nav-links a {
+                display: flex !important;
+                justify-content: center !important;
+                align-items: center !important;
+                width: 100%;
+                text-align: center;
+                padding: 8px 0;
+            }
+
+            /* Fixes the "Posts" button breaking wrapper constraints */
+            .nav-links button.btn-primary {
+                width: 100%;
+                height: 45px;
+                display: flex !important;
+                justify-content: center !important;
+                align-items: center !important;
+                border-radius: 25px; /* Clean oval rounding */
+                padding: 0;
+                overflow: hidden;
+            }
+
+            .nav-links button.btn-primary a {
+                width: 100%;
+                height: 100%;
+                display: flex !important;
+                justify-content: center !important;
+                align-items: center !important;
+                color: white !important;
+            }
+
+            /* 4. Keeps Main container flowing underneath the header */
+            .container {
+                display: flex;
+                flex-direction: column;
+                gap: 30px;
+                padding: 20px 15px;
+                margin-top: 0; /* Prevents overlap spacing bugs */
+            }
+
+            main, aside {
+                width: 100% !important;
+            }
+
+            /* Perfect layout centering inside content divs */
+            .logo,
+            .logo-icon,
+            .user-stat-card,
+            .post-tag,
+            .sidebar-widget h3 {
+                display: flex !important;
+                justify-content: center !important;
+                align-items: center !important;
+                text-align: center !important;
+            }
+
+            .sidebar-widget {
+                text-align: center;
+            }
+
+            .user-stat-card {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .sidebar-widget div[style*="display: flex"] {
+                justify-content: center !important;
+            }
+        }
     </style>
 </head>
 <body>
