@@ -6,6 +6,110 @@
     <title>EditPosts</title>
     <link rel="stylesheet" href="/Blog/Blog.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* ==========================================================================
+        Mobile Responsiveness & Centering Additions (Max-width: 768px)
+        ========================================================================== */
+
+        /* Base helper to ensure your header icons default to hidden on desktop */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: inherit;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        @media screen and (max-width: 768px) {
+            /* 1. Header & Hamburger Layout */
+            header {
+                position: relative;
+                flex-direction: column;
+                align-items: stretch !important;
+                padding: 10px 20px;
+            }
+
+            .nav-container {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+            }
+
+            .menu-toggle {
+                display: block; /* Shows hamburger on mobile */
+            }
+
+            /* 2. Collapsible Nav Links Menu */
+            .nav-links {
+                display: none; /* Hidden by default on mobile */
+                flex-direction: column;
+                width: 100%;
+                gap: 15px;
+                padding: 20px 0 10px 0;
+                text-align: center;
+            }
+
+            /* Class injected by JS when hamburger is clicked */
+            .nav-links.show {
+                display: flex;
+            }
+
+            .nav-links a, 
+            .nav-links button {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                height: 45px;
+            }
+
+            /* 3. Main Container Layout Grid to Column Stack */
+            .container {
+                display: flex;
+                flex-direction: column;
+                gap: 30px;
+                padding: 15px;
+            }
+
+            main, aside {
+                width: 100% !important;
+            }
+
+            /* Second delete button form separation alignment */
+            main form + form {
+                margin-top: 15px;
+            }
+
+            /* 4. Perfect Div & Content Centering updates */
+            .logo,
+            .logo-icon,
+            .user-stat-card,
+            .post-tag,
+            .sidebar-widget h3 {
+                display: flex !important;
+                justify-content: center !important;
+                align-items: center !important;
+                text-align: center !important;
+            }
+
+            .sidebar-widget {
+                text-align: center;
+            }
+
+            /* Adjusting flex layouts in sidebar components to stack gracefully and center */
+            .user-stat-card {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .sidebar-widget div[style*="display: flex"] {
+                justify-content: center !important;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -14,12 +118,16 @@
                 <div class="logo-icon">B</div>
                 <div class="logo-text">BlogScape</div>
             </a>
+            <!-- Hamburger Menu Icon (Hidden on desktop) -->
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
+                <i class="fa-solid fa-bars"></i>
+            </button>
         </div>
-        <div class="nav-links">
+        <!-- Grouped links for mobile toggle behavior -->
+        <div class="nav-links" id="navLinks">
             <a href="/Blog" class="active">Profile</a>
-            <button class="btn-primary"><a href="/Posts" style="color:white">Posts</a></button>
+            <button class="btn-primary"><a href="/Posts" style="color:white; display: flex; align-items: center; justify-content: center; height: 100%; width: 100%;">Posts</a></button>
         </div>
-        
     </header>
 
     <div class="container">
