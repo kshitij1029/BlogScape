@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EditPosts</title>
+    <link rel="stylesheet" href="/Blog/Blog.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">B</div>
+                <div class="logo-text">BlogScape</div>
+            </a>
+        </div>
+        <div class="nav-links">
+            <a href="/Blog" class="active">Profile</a>
+            <button class="btn-primary"><a href="/Posts" style="color:white">Posts</a></button>
+        </div>
+        
+    </header>
+
+    <div class="container">
+        <!-- Main Feed Area -->
+        <main>
+            <form id="loginForm" method="POST" action="/Posts/<%= post.id %>?_method=PATCH">
+                <input type="hidden" id="post-id">
+                <div class="form-group">
+                    <label>Story Title</label>
+                    <input type="text" name="title" id="post-title" placeholder="Enter a catchy title..." required value="<%= post.title %>">
+                </div>
+                <div class="form-group">
+                    <label>Topic </label>
+                    <input type="text" id="post-topic" name="topic" placeholder="E.g. Technology" required value="<%= post.topic %>">
+                </div>
+                <div class="form-group">
+                    <label>Content</label>
+                    <textarea id="post-content" name="content" placeholder="Tell your story..." required><%= post.content %></textarea>
+                </div>
+                <button type="submit" class="btn-primary" style="width: 100%; height: 50px; font-size: 16px;">Update Story</button>
+                   
+            </form>
+            <form method="post" action="/Posts/<%= post.id %>?_method=DELETE" >
+                <button type="submit" class="trash btn-primary">
+                    Delete Story <i class="fa-solid fa-trash" style="font-size: 16px; color:white"></i>
+                </button>
+            </form> 
+        </main>
+
+        <!-- Sidebar -->
+        <aside>
+            <div class="sidebar-widget">
+                <h3>About BlogScape</h3>
+                <p style="font-size: 14px; color: var(--text-secondary);">
+                    A space where your words matter. Join our community of writers and share your unique perspective with the world.
+                </p>
+            </div>
+            <% let blogger = user ? user.username : "Guest" %>
+            <div class="sidebar-widget">
+                <h3>Current Writer</h3>
+                <div id="current-user-info" class="user-stat-card">
+                    <!-- User info will be injected here -->
+                    <div class="user-avatar"><%= blogger.charAt(0).toUpperCase() %></div>
+                    <div>
+                        <span class="user-name" id="display-uid"><%= blogger %></span>
+                        <span class="post-date">Blog Contributor</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar-widget">
+                <h3>Top Categories to WriteOn</h3>
+                <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px;">
+                    <span class="post-tag">Lifestyle</span>
+                    <span class="post-tag">Technology</span>
+                    <span class="post-tag">Business</span>
+                    <span class="post-tag">Art</span>
+                    <span class="post-tag">Culture</span>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <div id="toast">Post published successfully!</div>
+
+    <script src="/Blog/Blog.js"></script>
+</body>
+</html>

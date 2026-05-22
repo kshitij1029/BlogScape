@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Posts</title>
+    <link rel="stylesheet" href="/MyPosts/MyPosts.css">
+    <style>
+        /* ==========================================================================
+           Layout Scroll & Responsive System Layer (Preserving original design & style)
+           ========================================================================== */
+        
+        /* Freeze screen viewport layer from native scrolling */
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+
+        /* Top-level system engine configuration layout alignment structure */
+        .app-layout {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        header {
+            position: relative;
+            flex-shrink: 0; /* Stop header component element resizing on high data density load */
+            box-sizing: border-box;
+        }
+
+        .main-container {
+            flex: 1;
+            height: calc(100vh - 76px); /* Auto handles precise dimension framing boundary lines minus header */
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+
+        #my-posts-feed {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+
+        .section-title {
+            flex-shrink: 0;
+        }
+
+        /* CRITICAL CHANGE: Only this post element container box allows internal workflow scrolling */
+        #posts-container {
+            flex: 1;
+            overflow-y: auto; /* Active internal scrolling window feature layer */
+            -webkit-overflow-scrolling: touch; /* Mobile touch momentum gesture standard */
+            box-sizing: border-box;
+        }
+
+        /* Remove default scrollbar graphics on Webkit rendering blocks */
+        #posts-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Remove default scrollbar graphics on Mozilla & Microsoft browser layers */
+        #posts-container {
+            -ms-overflow-style: none; /* IE and Edge */
+            scrollbar-width: none; /* Firefox */
+        }
+
+        /* Hidden functional input trigger layer node rules */
+        #menu-toggle {
+            display: none !important;
+        }
+
+        /* Responsive menu interactive graphic design item blueprint setup */
+        .menu-icon {
+            display: none;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 110;
+        }
+
+        .menu-icon span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background-color: currentColor; /* Keeps exact color tracking synchronization */
+            margin: 5px 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            border-radius: 2px;
+        }
+
+        /* ==========================================================================
+           Media Breakpoint Framework Restructuring Adjustments
+           ========================================================================== */
+        @media (max-width: 960px) {
+            html, body {
+                overflow: hidden; /* Strict containment locks background viewbox grid layout */
+            }
+            .main-container {
+                padding: 10px;
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            .menu-icon {
+                display: block; /* Hamburger toggle node overlay pops up cleanly on target screens */
+            }
+
+            /* Transforms nav elements alignment architecture into an absolute layout drop-drawer panel */
+            nav {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: inherit; /* Natively scales theme canvas color palette directly */
+                border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+                flex-direction: column;
+                align-items: stretch !important;
+                gap: 0 !important;
+                padding: 10px 20px 20px 20px;
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.05);
+                
+                pointer-events: none;
+                opacity: 0;
+                transform: translateY(-10px);
+                transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+                z-index: 105;
+            }
+
+            nav a {
+                display: block;
+                width: 100%;
+                text-align: center;
+                padding: 14px 0;
+                box-sizing: border-box;
+                opacity: 0;
+                transform: translateY(-8px);
+                transition: transform 0.3s ease, opacity 0.3s ease;
+            }
+
+            nav a.btn-orange {
+                margin-top: 10px;
+            }
+
+            /* Display conditions layer execution commands */
+            #menu-toggle:checked ~ nav {
+                opacity: 1;
+                transform: translateY(0);
+                pointer-events: auto;
+            }
+
+            #menu-toggle:checked ~ nav a:nth-child(1) { opacity: 1; transform: translateY(0); transition-delay: 0.04s; }
+            #menu-toggle:checked ~ nav a:nth-child(2) { opacity: 1; transform: translateY(0); transition-delay: 0.09s; }
+            #menu-toggle:checked ~ nav a:nth-child(3) { opacity: 1; transform: translateY(0); transition-delay: 0.14s; }
+
+            /* Transforms layout lines directly into crisp active cancel 'X' symbol */
+            #menu-toggle:checked ~ .menu-icon span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+            #menu-toggle:checked ~ .menu-icon span:nth-child(2) { opacity: 0; }
+            #menu-toggle:checked ~ .menu-icon span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+            .modal-content {
+                width: 92% !important;
+                margin: 20px auto !important;
+                padding: 16px !important;
+            }
+        }
+    </style>
+</head>
+<body data-current-user="<%= user ? user.username : '' %>">
+    <div class="app-layout">
+        <header>
+            <a href="/" class="logo-container">
+                <div class="logo-box">B</div>
+                <div class="logo-text">BlogScape</div>
+            </a>
+            
+            <!-- Checkbox Mobile Responsive Trigger Core Overlay Element -->
+            <input type="checkbox" id="menu-toggle">
+            <label for="menu-toggle" class="menu-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+
+            <nav>
+                <a href="/Blog" class="nav-link">Profile</a>
+                <a href="/Posts" class="btn-orange">Posts</a>
+                <a href="/Posts/<%= user ? user.username : '' %>/MyPosts" class="btn-orange">My Posts</a>
+            </nav>
+        </header>
+
+        <main class="main-container">
+            <section id="my-posts-feed">
+                <h1 class="section-title">My Published Posts</h1>
+                <div id="posts-container">
+                    <% for(let post of posts) { %>
+                        <% if (post.user === user.username) { %>
+                        <article class="post-card" data-post-id="<%= post.title %>">
+                            <div class="post-header">
+                                <div class="author-info">
+                                    <div class="avatar"><%= post.initial %></div>
+                                    <span class="author-name"><%= post.user %></span>
+                                </div>
+                                <span class="category-tag"><%= post.topic %></span>
+                            </div>
+                            
+                            <h2 class="post-title"><%= post.title %></h2>
+                            <p class="post-excerpt"><%= post.content %></p>
+                            
+                            <div class="post-footer">
+                                <div class="stat-item like-btn" data-liked="false">
+                                    <svg class="heart-icon icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                    </svg>
+                                    <span class="like-count"><%= post.likes %></span> Likes
+                                </div>
+
+                                <div class="stat-item comment-trigger">
+                                    <svg class="icon" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                                    <span class="comment-count"><%= post.comments %></span> Comments
+                                </div>
+
+                                <% if(user && user.username === post.user) { %>
+                                <a href="/Posts/<%= post.id %>/edit" class="update-btn" style="text-decoration: none; color: white;">Update</a>
+                                <% } %>
+                            </div>
+                        </article>
+                        <% } %>
+                    <% } %>
+                    
+                    <% if (posts.filter(p => p.user === user.username).length === 0) { %>
+                        <div class="NoPosts">
+                            <p>You haven't published any posts yet.</p>
+                        </div>
+                    <% } %>
+                </div>
+            </section>
+        </main>
+
+        <div id="commentModal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h3 id="modalTitle">Comments</h3>
+                <div id="commentsList"></div>
+                <div class="comment-input-area">
+                    <input type="text" id="newCommentInput" placeholder="Write a comment...">
+                    <button id="submitComment">Post</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/MyPosts/MyPosts.js"></script>
+</body>
+</html>

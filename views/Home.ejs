@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BlogScape — Publish Your Passions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/Home/Home.css" />
+</head>
+<body>
+
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursor-ring"></div>
+
+  <!-- ── NAVBAR ── -->
+  <nav id="navbar">
+    <a href="/" class="nav-logo">
+      <div class="logo-mark">B</div>
+      <span class="logo-name">BlogScape</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#blogs">Stories</a></li>
+      <li><a href="/SignIn" class="signin-btn">Sign In</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section id="hero" class="hero">
+    <div class="hero-bg-circle hbc1"></div>
+    <div class="hero-bg-circle hbc2"></div>
+
+    <!-- Marquee ticker -->
+    <div class="marquee-strip">
+      <div class="marquee-inner">
+        <span>Travel</span><span class="sep">✦</span>
+        <span>Technology</span><span class="sep">✦</span>
+        <span>Culture</span><span class="sep">✦</span>
+        <span>Food &amp; Cuisine</span><span class="sep">✦</span>
+        <span>Design</span><span class="sep">✦</span>
+        <span>Science</span><span class="sep">✦</span>
+        <span>Politics</span><span class="sep">✦</span>
+        <span>Wellness</span><span class="sep">✦</span>
+        <span>Finance</span><span class="sep">✦</span>
+        <span>Art &amp; Photography</span><span class="sep">✦</span>
+        <%# Duplicate set for seamless loop %>
+        <span>Travel</span><span class="sep">✦</span>
+        <span>Technology</span><span class="sep">✦</span>
+        <span>Culture</span><span class="sep">✦</span>
+        <span>Food &amp; Cuisine</span><span class="sep">✦</span>
+        <span>Design</span><span class="sep">✦</span>
+        <span>Science</span><span class="sep">✦</span>
+        <span>Politics</span><span class="sep">✦</span>
+        <span>Wellness</span><span class="sep">✦</span>
+        <span>Finance</span><span class="sep">✦</span>
+        <span>Art &amp; Photography</span><span class="sep">✦</span>
+      </div>
+    </div>
+
+    <!-- Hero text -->
+    <div class="hero-text">
+      <div class="hero-eyebrow">
+        <div class="eyebrow-dot"></div>
+        Now open to all creators
+      </div>
+      <h1 class="hero-h1">
+        <span class="line"><span>Publish your</span></span>
+        <span class="line"><span><em>passions,</em></span></span>
+        <span class="line"><span>your way.</span></span>
+      </h1>
+      <p class="hero-sub">
+        Create a unique and beautiful blog. It's easy and free.
+        Join millions of others who share their stories with the world.
+      </p>
+      <div class="hero-cta-row">
+        <a href="#create" class="btn-primary">
+          Get Started <span class="arrow">→</span>
+        </a>
+        <a href="#blogs" class="btn-ghost">
+          <div class="play-icon">▶</div>
+          See stories
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-num">3.2<span>M+</span></div>
+          <div class="stat-label">Active Bloggers</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">48<span>M</span></div>
+          <div class="stat-label">Monthly Readers</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">190<span>+</span></div>
+          <div class="stat-label">Countries</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hero visual -->
+    <div class="hero-visual">
+      <div class="visual-stack">
+        <div class="vis-orange-blob"></div>
+        <img class="vis-img-main"
+             src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=800&q=80"
+             alt="Writing a blog" />
+        <img class="vis-img-secondary"
+             src="https://images.unsplash.com/photo-1432821596592-e2c18b78144f?auto=format&fit=crop&w=500&q=80"
+             alt="Creator" />
+        <div class="vis-card-float">
+          <div class="float-card-title">Reading now</div>
+          <div class="float-card-readers">
+            <div class="reader-avatars">
+              <div class="av">A</div>
+              <div class="av av2">K</div>
+              <div class="av av3">M</div>
+              <div class="av av4">R</div>
+            </div>
+            <span class="float-card-count">+2.4k readers</span>
+          </div>
+        </div>
+        <div class="vis-card-trending">
+          <div class="trend-label">Trending today</div>
+          <div class="trend-val">↑ 318%</div>
+          <div class="trend-sub">Travel stories</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FEATURE PILLS ── -->
+  <section class="features-strip">
+    <div class="features-row">
+      <div class="feat-pill delay-1"><span class="icon">✍️</span> Rich Text Editor</div>
+      <div class="feat-pill delay-2"><span class="icon">📊</span> Built-in Analytics</div>
+      <div class="feat-pill delay-3"><span class="icon">💰</span> Monetization Tools</div>
+      <div class="feat-pill delay-4"><span class="icon">🎨</span> 500+ Themes</div>
+      <div class="feat-pill delay-5"><span class="icon">🌍</span> Custom Domains</div>
+      <div class="feat-pill delay-1"><span class="icon">🔒</span> Privacy Controls</div>
+      <div class="feat-pill delay-2"><span class="icon">🤝</span> Community</div>
+      <div class="feat-pill delay-3"><span class="icon">⚡</span> Blazing Fast</div>
+    </div>
+  </section>
+
+  <!-- ── ABOUT ── -->
+  <section id="about" class="about">
+    <div class="about-inner">
+
+      <!-- Photo collage -->
+      <div class="about-photos reveal-left">
+        <img class="ap1"
+             src="https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?auto=format&fit=crop&w=600&q=80"
+             alt="Writer at desk" />
+        <img class="ap2"
+             src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=500&q=80"
+             alt="Notebook" />
+        <img class="ap3"
+             src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=400&q=80"
+             alt="Laptop writing" />
+        <div class="about-tag">🏆 Top Platform 2026</div>
+      </div>
+
+      <!-- About copy -->
+      <div class="about-text reveal-right">
+        <span class="about-label">The Journey</span>
+        <h2 class="about-h2">Your story, <em>beautifully</em> told.</h2>
+        <p class="about-p">
+          We believe everyone has a unique voice. Whether it's your culinary adventures,
+          political insights, or local dispatches — we provide the platform to let your
+          words shine and reach the audiences they deserve.
+        </p>
+        <div class="about-features">
+          <div class="af-item">
+            <div class="af-icon">🎨</div>
+            <div>
+              <div class="af-title">Flexible layouts &amp; stunning themes</div>
+              <div class="af-desc">Hundreds of designer-crafted templates, fully customizable to your brand.</div>
+            </div>
+          </div>
+          <div class="af-item">
+            <div class="af-icon">🌐</div>
+            <div>
+              <div class="af-title">Free domain or buy a custom one</div>
+              <div class="af-desc">Start with yourname.blogscape.com or connect your own domain in minutes.</div>
+            </div>
+          </div>
+          <div class="af-item">
+            <div class="af-icon">📈</div>
+            <div>
+              <div class="af-title">Analytics &amp; monetization</div>
+              <div class="af-desc">Understand your audience and earn with ads, subscriptions, and sponsorships.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── BLOG PREVIEWS ── -->
+  <section id="blogs" class="blogs">
+    <div class="section-header reveal-up">
+      <div class="section-eyebrow">Featured Stories</div>
+      <h2 class="section-h2">Trending on BlogScape</h2>
+    </div>
+
+    <%# If posts are passed from the server, render them dynamically %>
+    <% if (typeof posts !== 'undefined' && posts && posts.length > 0) { %>
+    <div class="blog-grid">
+      <% posts.forEach(function(post, i) { %>
+      <div class="blog-card reveal-up <%= i > 0 ? 'delay-' + i : '' %>">
+        <div class="card-img-wrap">
+          <img src="<%= post.image %>" alt="<%= post.title %>" />
+        </div>
+        <div class="card-body">
+          <span class="card-tag"><%= post.tag %></span>
+          <div class="card-title"><%= post.title %></div>
+          <div class="card-meta">
+            <img class="meta-avatar" src="<%= post.authorAvatar %>" alt="<%= post.author %>" />
+            <span><%= post.author %></span>
+            <div class="meta-dot"></div>
+            <span><%= post.readTime %> min read</span>
+          </div>
+        </div>
+      </div>
+      <% }); %>
+    </div>
+    <% } else { %>
+    <%# Fallback static cards when no server data is provided %>
+    <div class="blog-grid">
+      <div class="blog-card reveal-up">
+        <div class="card-img-wrap">
+          <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=800&q=80" alt="Travel blog" />
+        </div>
+        <div class="card-body">
+          <span class="card-tag">Travel</span>
+          <div class="card-title">48 Hours in Kyoto: The Ultimate Traveler's Guide to Japan's Ancient Capital</div>
+          <div class="card-meta">
+            <img class="meta-avatar" src="https://i.pravatar.cc/60?img=10" alt="Author" />
+            <span>Sarah Chen</span>
+            <div class="meta-dot"></div>
+            <span>8 min read</span>
+          </div>
+        </div>
+      </div>
+      <div class="blog-card reveal-up delay-1">
+        <div class="card-img-wrap">
+          <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80" alt="Tech blog" />
+        </div>
+        <div class="card-body">
+          <span class="card-tag">Technology</span>
+          <div class="card-title">The Next Wave of AI Interfaces Changing How We Create</div>
+          <div class="card-meta">
+            <img class="meta-avatar" src="https://i.pravatar.cc/60?img=15" alt="Author" />
+            <span>James O.</span>
+            <div class="meta-dot"></div>
+            <span>5 min read</span>
+          </div>
+        </div>
+      </div>
+      <div class="blog-card reveal-up delay-2">
+        <div class="card-img-wrap">
+          <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=600&q=80" alt="Food blog" />
+        </div>
+        <div class="card-body">
+          <span class="card-tag">Food</span>
+          <div class="card-title">Street Food Secrets: The Recipes That Locals Don't Want You to Know</div>
+          <div class="card-meta">
+            <img class="meta-avatar" src="https://i.pravatar.cc/60?img=20" alt="Author" />
+            <span>Priya M.</span>
+            <div class="meta-dot"></div>
+            <span>6 min read</span>
+          </div>
+        </div>
+      </div>
+      <div class="blog-card reveal-up delay-3">
+        <div class="card-img-wrap">
+          <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=600&q=80" alt="Wellness blog" />
+        </div>
+        <div class="card-body">
+          <span class="card-tag">Wellness</span>
+          <div class="card-title">Morning Rituals That High Performers Swear By</div>
+          <div class="card-meta">
+            <img class="meta-avatar" src="https://i.pravatar.cc/60?img=25" alt="Author" />
+            <span>Tom B.</span>
+            <div class="meta-dot"></div>
+            <span>4 min read</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% } %>
+  </section>
+
+  <!-- ── TESTIMONIALS ── -->
+  <section class="testimonials">
+    <div class="section-header reveal-up">
+      <div class="section-eyebrow">What Creators Say</div>
+      <h2 class="section-h2">Loved by writers worldwide</h2>
+    </div>
+    <div class="t-grid">
+      <div class="t-card reveal-up">
+        <div class="t-stars">★★★★★</div>
+        <div class="t-quote">"</div>
+        <p class="t-text">BlogScape completely changed how I share my travel stories. The analytics tool helped me understand my audience and double my readership in three months.</p>
+        <div class="t-author">
+          <img class="t-av" src="https://i.pravatar.cc/60?img=30" alt="Amara Diallo" />
+          <div>
+            <div class="t-name">Amara Diallo</div>
+            <div class="t-role">Travel Writer · 12k followers</div>
+          </div>
+        </div>
+      </div>
+      <div class="t-card reveal-up delay-2">
+        <div class="t-stars">★★★★★</div>
+        <div class="t-quote">"</div>
+        <p class="t-text">The monetization tools are incredible. I turned my food blog into a full-time income within a year. The platform basically pays for itself many times over.</p>
+        <div class="t-author">
+          <img class="t-av" src="https://i.pravatar.cc/60?img=32" alt="Marco Ruiz" />
+          <div>
+            <div class="t-name">Marco Ruiz</div>
+            <div class="t-role">Food Blogger · 45k followers</div>
+          </div>
+        </div>
+      </div>
+      <div class="t-card reveal-up delay-4">
+        <div class="t-stars">★★★★★</div>
+        <div class="t-quote">"</div>
+        <p class="t-text">I was a complete beginner. BlogScape's editor made it so easy to just focus on writing. Now I have readers from over 40 countries. Completely life-changing.</p>
+        <div class="t-author">
+          <img class="t-av" src="https://i.pravatar.cc/60?img=45" alt="Yuki Tanaka" />
+          <div>
+            <div class="t-name">Yuki Tanaka</div>
+            <div class="t-role">Tech Blogger · 8k followers</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CREATE CTA ── -->
+  <section id="create" class="create-cta">
+    <div class="cta-floating-text">Write</div>
+    <div class="create-content reveal-up">
+      <h2 class="create-h2">Ready to start<br>your story?</h2>
+      <p class="create-p">Join millions of creators sharing their passion with the world. No coding required. Just your voice.</p>
+      <a href="/SignIn" class="btn-white">
+        Create Your Blog — It's Free →
+      </a>
+      <div class="create-icons">
+        <div class="ci-box">✍️</div>
+        <div class="ci-box">📸</div>
+        <div class="ci-box">🎨</div>
+        <div class="ci-box">💰</div>
+        <div class="ci-box">🌍</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-logo">
+          <div class="logo-mark">B</div>
+          <span class="logo-name">BlogScape</span>
+        </div>
+        <p class="footer-brand-p">
+          The world's most accessible blogging platform. Empowering creators
+          to share their stories without technical barriers.
+        </p>
+      </div>
+      <div>
+        <div class="footer-h4">Product</div>
+        <ul class="footer-links">
+          <li><a href="#">Features</a></li>
+          <li><a href="#">Themes</a></li>
+          <li><a href="#">Pricing</a></li>
+          <li><a href="#">Blog</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-h4">Resources</div>
+        <ul class="footer-links">
+          <li><a href="#">Help Center</a></li>
+          <li><a href="#">Creator Academy</a></li>
+          <li><a href="#">Community Forum</a></li>
+          <li><a href="#">API Docs</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-h4">Legal</div>
+        <ul class="footer-links">
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Content Policy</a></li>
+          <li><a href="#">Cookies</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© <%= new Date().getFullYear() %> BlogScape. All rights reserved.</div>
+      <div class="footer-socials">
+        <a href="#" class="social-btn">𝕏</a>
+        <a href="#" class="social-btn">in</a>
+        <a href="#" class="social-btn">f</a>
+        <a href="#" class="social-btn">▶</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/Home/Home.js"></script>
+</body>
+</html>
